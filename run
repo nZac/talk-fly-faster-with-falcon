@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [ -z ${1+x} ]; then
+  echo "Pass an example file to this script without the prefix e.g. 'basic'"
+  exit 1
+else
+  gunicorn "$1:api" --access-logfile "-" -b 127.0.0.1:8080 --reload --timeout 0
+fi
